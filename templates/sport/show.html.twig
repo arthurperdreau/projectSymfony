@@ -1,0 +1,23 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <div>
+        <a href="{{ path('sports') }}">Return</a>
+        <h4>{{ sport.name }}</h4>
+        <p>{{ sport.price }}</p>
+        <a href="{{ path('delete_sport', {id:sport.id}) }}">Delete</a>
+        <a href="{{ path('edit_sport', {id:sport.id}) }}">Edit</a>
+    </div>
+    <div class="border border-black">
+        {% for comment in sport.comments %}
+            <p>{{ comment.content }}</p>
+            <p>{{ comment.createdAt|date("j F, Y H:i") }}</p>
+        {% endfor %}
+    </div>
+    <div class="border">
+        {{ form_start(form)  }}
+        {{ form_row(form.content)  }}
+        <button type="submit">comment</button>
+        {{ form_end(form)  }}
+    </div>
+{% endblock %}

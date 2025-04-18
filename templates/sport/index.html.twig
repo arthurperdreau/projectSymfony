@@ -1,0 +1,13 @@
+{% extends 'base.html.twig' %}
+
+
+{% block body %}
+<p>The sports</p>
+    {% for sport in sports %}
+        <hr>
+        <h4>{{ sport.name }}</h4>
+        <p>{{ sport.price }}</p>
+        <a href="{{ path('show_sport', {id:sport.id}) }}">See more</a>
+        <hr>
+    {% endfor %}
+{% endblock %}
